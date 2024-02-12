@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "removeComments": true,
+        "outDir": "js",
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "moduleResolution":"node",
+    }
+}
