@@ -1,24 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
-interface ICategory {
-  id: string;
-  name: string;
-}
-
-interface IItem {
-  id: string;
-  name: string;
-  price: number;
-  imageUrl: string;
-  description: string;
-  categoryId: string;
-}
+import { ICategory } from './types';
+import { ICard } from '../../components/Card/types';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import Card from '../../components/Card';
+import styles from './Home.module.scss';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState<ICategory[]>([]);
-  const [items, setItems] = useState<IItem[]>([]);
+  const [items, setItems] = useState<ICard[]>([]);
 
   useEffect(() => {
     axios.get('http://localhost:5000/categories').then((response) => {
@@ -32,27 +24,35 @@ const Home = () => {
 
   return (
     <>
-      {!isLoading && (
-        <>
-          <ul>
+      <Header />
+      <main className={styles.content}>
+        {!isLoading && (
+          <>
             {categories.map((item) => {
-              return <li key={item.id}>{item.name}</li>;
+              return (
+                <>
+                  <h2 key={item.id}>{item.name}</h2>
+                  <ul className={styles.items}>
+                    {items.map((meal) => {
+                      return meal.categoryId === item.id && <Card {...meal} />;
+                    })}
+                  </ul>
+                </>
+              );
             })}
-          </ul>
-          <ul>
+            {/* <ul className={styles.items}>
             {items.map((item) => {
               return (
                 <li key={item.id}>
-                  {item.name}
-                  {item.price}
-                  <img src={item.imageUrl} alt="Food" />
-                  {item.description}
+                  <Card {...item} />
                 </li>
               );
             })}
-          </ul>
-        </>
-      )}
+          </ul> */}
+          </>
+        )}
+      </main>
+      <Footer />
     </>
   );
 };
