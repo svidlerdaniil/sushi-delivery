@@ -1,7 +1,7 @@
 .card {
-  width: 224px;
-  height: 344px;
-  padding: 20px 0;
+  width: 180px;
+  height: 270px;
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -13,15 +13,16 @@
   transition: border 0.3s ease-in-out;
 
   .image {
-    width: 180px;
-    height: 180px;
+    width: 130px;
+    height: 130px;
     transition: all 0.3s ease-in-out;
   }
 
   .text {
     width: 100%;
     text-align: center;
-    font-size: 22px;
+    font-size: 1.1rem;
+    font-weight: 700;
   }
 
   .info {
@@ -32,7 +33,8 @@
     align-items: center;
 
     .text {
-      font-size: 18px;
+      font-size: 1rem;
+      font-weight: 400;
     }
 
     .add {

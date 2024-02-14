@@ -5,6 +5,7 @@ import { ICard } from '../../components/Card/types';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Card from '../../components/Card';
+import Search from '../../components/Search';
 import styles from './Home.module.scss';
 
 const Home = () => {
@@ -13,43 +14,53 @@ const Home = () => {
   const [items, setItems] = useState<ICard[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/categories').then((response) => {
-      setCategories(response.data);
-    });
-    axios.get('http://localhost:5000/items').then((response) => {
-      setItems(response.data);
-    });
-    setIsLoading(false);
+    const fetchData = async () => {
+      try {
+        const categoriesResponse = await axios.get<ICategory[]>(
+          'http://localhost:5000/categories'
+        );
+        setCategories(categoriesResponse.data);
+
+        const itemsResponse = await axios.get<ICard[]>(
+          'http://localhost:5000/items'
+        );
+        setItems(itemsResponse.data);
+
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
     <>
       <Header />
       <main className={styles.content}>
+        <div className={styles.filtration}>
+          <div className={styles.inner}>
+            <Search />
+            <span>Сортировка</span>
+          </div>
+        </div>
+
         {!isLoading && (
-          <>
+          <div className={styles.menu}>
             {categories.map((item) => {
               return (
-                <>
+                <section className={styles.category}>
                   <h2 key={item.id}>{item.name}</h2>
                   <ul className={styles.items}>
                     {items.map((meal) => {
                       return meal.categoryId === item.id && <Card {...meal} />;
                     })}
                   </ul>
-                </>
+                </section>
               );
             })}
-            {/* <ul className={styles.items}>
-            {items.map((item) => {
-              return (
-                <li key={item.id}>
-                  <Card {...item} />
-                </li>
-              );
-            })}
-          </ul> */}
-          </>
+          </div>
         )}
       </main>
       <Footer />
