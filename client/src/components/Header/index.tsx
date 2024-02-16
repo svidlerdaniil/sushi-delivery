@@ -17,10 +17,8 @@ const Header = () => {
               <h1>Tasty sushi</h1>
             </div>
           </Link>
-          <div className={styles.filtration}>
-            <Search />
-            <span>Сортировка</span>
-          </div>
+          <Search />
+          <span className={styles.sort}>Сортировка</span>
           <div className={styles.buttons}>
             <button className={styles.button}>
               <BsPerson size={20} />

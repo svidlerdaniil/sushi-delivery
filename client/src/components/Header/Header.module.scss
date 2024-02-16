@@ -37,11 +37,13 @@
         }
       }
 
-      .filtration {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        column-gap: 10px;
+      .sort {
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          color: $accent-color;
+          cursor: pointer;
+        }
       }
 
       .buttons {
@@ -114,14 +116,14 @@
       .content {
         width: 600px;
 
-        .filtration {
-          input {
-            display: none;
-          }
-          span {
-            display: none;
-          }
+        /* .filtration { */
+        input {
+          display: none;
         }
+        span {
+          display: none;
+        }
+        /* } */
 
         .buttons {
           .button {

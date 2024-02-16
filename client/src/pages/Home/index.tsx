@@ -1,11 +1,11 @@
 import axios from 'axios';
+import ContentLoader from 'react-content-loader';
 import { useEffect, useState } from 'react';
 import { ICategory } from './types';
 import { ICard } from '../../components/Card/types';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Card from '../../components/Card';
-import Search from '../../components/Search';
 import styles from './Home.module.scss';
 
 const Home = () => {
@@ -39,7 +39,7 @@ const Home = () => {
     <>
       <Header />
       <main className={styles.content}>
-        {!isLoading && (
+        {!isLoading ? (
           <div className={styles.menu}>
             {categories.map((item) => {
               return (
@@ -48,6 +48,48 @@ const Home = () => {
                   <ul className={styles.items}>
                     {items.map((meal) => {
                       return meal.categoryId === item.id && <Card {...meal} />;
+                    })}
+                  </ul>
+                </section>
+              );
+            })}
+          </div>
+        ) : (
+          <div className={styles.menu}>
+            {new Array(3).fill(undefined).map(() => {
+              return (
+                <section className={styles.category}>
+                  <ContentLoader
+                    speed={2}
+                    width={165}
+                    height={27}
+                    viewBox="0 0 165 27"
+                    backgroundColor="#f3f3f3"
+                    foregroundColor="#ecebeb"
+                  >
+                    <rect x="0" y="0" rx="10" ry="10" width="165" height="27" />
+                  </ContentLoader>
+                  <ul className={styles.items}>
+                    {new Array(10).fill(undefined).map(() => {
+                      return (
+                        <ContentLoader
+                          speed={2}
+                          width={180}
+                          height={270}
+                          viewBox="0 0 180 270"
+                          backgroundColor="#f3f3f3"
+                          foregroundColor="#ecebeb"
+                        >
+                          <rect
+                            x="0"
+                            y="0"
+                            rx="25"
+                            ry="25"
+                            width="180"
+                            height="270"
+                          />
+                        </ContentLoader>
+                      );
                     })}
                   </ul>
                 </section>
