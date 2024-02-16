@@ -1,32 +1,10 @@
+@import '../../scss/variables.scss';
+
 .content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-
-  .filtration {
-    margin: 0;
-    padding: 15px 0;
-    width: 100%;
-    height: 80px;
-    top: 0;
-    position: sticky;
-    outline: none;
-    z-index: 1;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid transparent;
-    box-shadow: 0px 5px 10px rgb(233, 233, 233);
-
-    .inner {
-      width: 980px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
 
   .menu {
     margin: 20px auto;
@@ -52,6 +30,56 @@
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1030px) {
+  .content {
+    .menu {
+      .category {
+        .items {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 830px) {
+  .content {
+    .menu {
+      .category {
+        .items {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .content {
+    .menu {
+      .category {
+        .items {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .content {
+    .menu {
+      .category {
+        align-items: center;
+
+        .items {
+          grid-template-columns: repeat(1, 1fr);
+        }
       }
     }
   }

@@ -39,13 +39,6 @@ const Home = () => {
     <>
       <Header />
       <main className={styles.content}>
-        <div className={styles.filtration}>
-          <div className={styles.inner}>
-            <Search />
-            <span>Сортировка</span>
-          </div>
-        </div>
-
         {!isLoading && (
           <div className={styles.menu}>
             {categories.map((item) => {

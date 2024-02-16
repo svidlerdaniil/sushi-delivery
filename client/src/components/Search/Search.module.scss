@@ -1,13 +1,20 @@
+@import '../../scss/variables.scss';
+
 .input {
-  padding: 20px 10px;
-  width: 380px;
-  height: 50px;
+  padding: 10px;
+  width: 300px;
   border: 2px solid transparent;
   border-radius: 20px;
   outline: none;
   transition: all 0.3s linear;
 
   &:focus {
-    border: 2px solid #ffb922;
+    border: 2px solid $accent-color;
+  }
+}
+
+@media (max-width: 830px) {
+  .input {
+    width: 150px;
   }
 }

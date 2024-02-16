@@ -1,3 +1,5 @@
+@import '../../scss/variables.scss';
+
 .footer {
   margin-top: auto;
   background-color: #000;
@@ -11,6 +13,14 @@
 
     .link {
       color: #fff;
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .footer {
+    .links {
+      flex-direction: column;
     }
   }
 }
