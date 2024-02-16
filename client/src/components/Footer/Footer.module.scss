@@ -1,0 +1,26 @@
+@import '../../scss/variables.scss';
+
+.footer {
+  margin-top: auto;
+  background-color: #000;
+  padding: 20px 15px;
+
+  .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    .link {
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .footer {
+    .links {
+      flex-direction: column;
+    }
+  }
+}
